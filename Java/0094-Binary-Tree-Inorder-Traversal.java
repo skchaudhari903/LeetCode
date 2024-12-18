@@ -20,18 +20,18 @@ Output: [1,3,2]
  */
 class Solution {
     public List<Integer> inorderTraversal(TreeNode root) {
-        List<Integer> result = new ArrayList<>();
-        inorder(root, result);
-        return result;
+        List<Integer> visitedNodes = new ArrayList<>();
+        inorder(root, visitedNodes);
+        return visitedNodes;
     }
 
-    public void inorder(TreeNode node, List<Integer> visitedNodes)
+    public void inorder(TreeNode root, List<Integer> visitedNodes)
     {
-         if (node == null)
+         if (root == null)
             return;
-
-        inorder(node.left, visitedNodes);
-        visitedNodes.add(node.val);
-        inorder(node.right, visitedNodes);
+        // left -> root -> right
+        inorder(root.left, visitedNodes);
+        visitedNodes.add(root.val);
+        inorder(root.right, visitedNodes);
     }
 }
